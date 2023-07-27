@@ -1,24 +1,21 @@
-const { Configuration, OpenAIApi } = require("openai");
+const express = require("express");
 const dotenv = require("dotenv");
 dotenv.config();
 
-const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
+const { interviewRoute } = require("./routes/interview.route");
+const PORT = process.env.PORT;
+const app = express();
+app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.send("home route");
 });
 
-const openai = new OpenAIApi(configuration);
+app.use("/interview", interviewRoute);
+// async function chatReply(text) {}
 
-async function chatReply(text) {
-  try {
-    const chatCompletion = await openai.createCompletion({
-      model: "text-davinci-003",
-      prompt: text,
-      max_tokens: 2000,
-    });
-    console.log(chatCompletion.data.choices[0].text);
-  } catch (error) {
-    console.log("error", error);
-  }
-}
+// chatReply("what is the currency of india");
 
-chatReply("what is the currency of india");
+app.listen(PORT, () => {
+  console.log("app is listening at ", PORT);
+});
