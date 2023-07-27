@@ -2,7 +2,8 @@ const express = require("express");
 const dotenv = require("dotenv");
 dotenv.config();
 
-const { interviewRoute } = require("./routes/interview.route");
+const { interviewRouter } = require("./routes/interview.route");
+const { questionRouter } = require("./routes/question.route");
 const PORT = process.env.PORT;
 const app = express();
 app.use(express.json());
@@ -10,8 +11,8 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("home route");
 });
-
-app.use("/interview", interviewRoute);
+app.use("/questions", questionRouter);
+app.use("/interview", interviewRouter);
 // async function chatReply(text) {}
 
 // chatReply("what is the currency of india");
