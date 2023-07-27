@@ -1,5 +1,5 @@
 const express = require("express");
-const interviewRoute = express.Router();
+const interviewRouter = express.Router();
 const { Configuration, OpenAIApi } = require("openai");
 
 const configuration = new Configuration({
@@ -8,7 +8,7 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 //post route
-interviewRoute.post("/post", async (req, res) => {
+interviewRouter.post("/post", async (req, res) => {
   try {
     const text = req.body.text;
     console.log(text);
@@ -22,4 +22,4 @@ interviewRoute.post("/post", async (req, res) => {
     console.log("error", error);
   }
 });
-module.exports = { interviewRoute };
+module.exports = { interviewRouter };
