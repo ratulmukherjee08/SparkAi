@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import Slide from 'react-reveal/Slide';
 import { BiChevronDown } from "react-icons/bi"
-import { Link } from 'react-router-dom';
+import { Link, json } from 'react-router-dom';
 
 const SlideExample = () => {
 
-    const Subjects = ["Mern", "Java", "Node"]
+    const Subjects = ["ReactJS", "javascript", "NodeJS" , "Java", "Python"]
 
 
 
@@ -30,6 +30,7 @@ const SlideExample = () => {
                         if(ele!==selected){
                             setSelected(ele)
                             setOpen(false)
+                            localStorage.setItem("topic",JSON.stringify(ele))
                         }
                     }}
                     >
