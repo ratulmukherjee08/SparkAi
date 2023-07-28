@@ -16,15 +16,15 @@ const SlideExample = () => {
         <Slide top>
           <div className='flex justify-center'>
             <div className='w-72 font-medium'>
-              <div className={`bg-white w-full p-2 flex items-center justify-between rounded ${!selected && "text-gray-700"}`}  
+              <div className={`AI w-full p-2 flex items-center justify-between rounded-xl ${!selected && "text-gray-700"}`}  
               onClick={()=>setOpen(!open)}
               >
                 {selected ? selected : "Select Course"}
                 <BiChevronDown size={20} className={`${open && "rotate-180"}`}/>
               </div>
-              <ul className={`bg-white mt-2 ${open ? "block" : "hidden"}`}>
+              <ul className={`AI  mt-2 ${open ? "block" : "hidden"}`}>
                 {Subjects.map((ele)=>(
-                    <li className={`text-left p-2 text-sm hover:bg-blue-300 hover:text-white ${ele==selected && "bg-sky-600 text-white"}`}
+                    <li className={`text-left p-2 text-base hover:bg-blue-300 hover:text-white ${ele==selected && "bg-sky-600 text-white"}`}
                     onClick={()=>{
                         if(ele!==selected){
                             setSelected(ele)
@@ -36,7 +36,7 @@ const SlideExample = () => {
                     </li>
                 ))}
               </ul>
-            {selected && <button  className="px-4 py-2 mt-3 bg-red-500 text-black rounded-xl font-bold hover:bg-red-800">Let's Start</button> }
+            {selected && <button  className="px-4 py-2 mt-5 bg-red-500 text-gray-600 rounded-xl font-bold hover:bg-red-800">Start The Interview</button> }
             </div>
           </div>
         </Slide>
@@ -72,11 +72,11 @@ export const Homepage = () => {
             </div>
         ) : (
             <div>
-            <h1 className="text-white text-4xl font-bold mb-2">
-        Welcome to Ai powered chatbot
+            <h1 className="Click">
+        Welcome to AI Powered Interview Mastery .
       </h1>
-      <h1 className="text-white text-4xl font-bold mb-2">Start your journey</h1>
-      <button className="px-4 py-2 mt-3 bg-red-500 text-black rounded-xl font-bold hover:bg-red-800" onClick={clicked}>
+      <h1 className="Click">Click To Start Your Journey</h1>
+      <button className="px-4 py-2 mt-5 bg-red-500 text-black rounded-xl font-bold hover:bg-red-800" onClick={clicked}>
         Start
       </button>
             </div>
