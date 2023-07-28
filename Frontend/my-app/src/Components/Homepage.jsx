@@ -22,9 +22,9 @@ const SlideExample = () => {
                 {selected ? selected : "Select Course"}
                 <BiChevronDown size={20} className={`${open && "rotate-180"}`}/>
               </div>
-              <ul className={`AI  mt-2 ${open ? "block" : "hidden"}`}>
+              <ul className={`AI mt-2 rounded-md ${open ? "block" : "hidden"}`}>
                 {Subjects.map((ele)=>(
-                    <li className={`text-left p-2 text-base hover:bg-blue-300 hover:text-white ${ele==selected && "bg-sky-600 text-white"}`}
+                    <li className={`text-left rounded-md text-white p-2 text-base hover:bg-blue-300 hover:text-white ${ele==selected && "bg-sky-600 text-white"}`}
                     onClick={()=>{
                         if(ele!==selected){
                             setSelected(ele)
