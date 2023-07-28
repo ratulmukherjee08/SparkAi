@@ -60,7 +60,9 @@ export const Homepage = () => {
 
 
   return (
-    <div className="w-screen h-screen">
+   
+
+        <div className="w-screen h-screen">
     <img src="./homepage.jpg" alt="" className="object-cover w-full h-full " />
     <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
     <img src="./logo.svg" className="w-52 m-auto" />
@@ -71,7 +73,7 @@ export const Homepage = () => {
             <SlideExample/>
             </div>
         ) : (
-            <div>
+             <Slide top>
             <h1 className="Click">
         Welcome to AI Powered Interview Mastery .
       </h1>
@@ -79,10 +81,13 @@ export const Homepage = () => {
       <button className="px-4 py-2 mt-5 bg-red-500 text-black rounded-xl font-bold hover:bg-red-800" onClick={clicked}>
         Start
       </button>
-            </div>
+      </Slide>
         )
       }
     </div>
   </div>
+          
+    
   );
 };
+
