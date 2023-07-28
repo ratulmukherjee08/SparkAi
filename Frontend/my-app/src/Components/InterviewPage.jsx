@@ -12,8 +12,8 @@ const InterviewPage = () => {
         </div>
       </div>
 
-      <div className="w-full h-520 ">
-        <textarea className="w-7/12 border-solid border-black m-8" rows="15"></textarea>
+      <div className="w-full h-520 flex justify-between items-center ">
+        <textarea className="w-full border-solid border-black m-8 " rows="15"></textarea>
       </div>
 
       <div className="w-full h-140 flex justify-center items-center bg-sky-950 mt-14">
