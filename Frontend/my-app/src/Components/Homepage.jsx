@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Slide from 'react-reveal/Slide';
 import { BiChevronDown } from "react-icons/bi"
+import { Link } from 'react-router-dom';
 
 const SlideExample = () => {
 
@@ -36,7 +37,7 @@ const SlideExample = () => {
                     </li>
                 ))}
               </ul>
-            {selected && <button  className="px-4 py-2 mt-5 bg-red-500 text-gray-600 rounded-xl font-bold hover:bg-red-800">Start The Interview</button> }
+            {selected && <Link to="/interview"><button  className="px-4 py-2 mt-5 bg-red-500 text-gray-600 rounded-xl font-bold hover:bg-red-800">Start The Interview</button></Link> }
             </div>
           </div>
         </Slide>
