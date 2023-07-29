@@ -134,22 +134,22 @@ const InterviewPage = () => {
   console.log(questions);
 
   return (
-    <>
-      <div className="w-full h-14 flex justify-between items-center bg-sky-950">
+    <div className='bg-slate-200'>
+      <div className="w-full h-14 flex justify-between items-center bg-emerald-600">
         <img src="./logo.svg" className="w-20" />
         <div>
-          <button className="bg-orange-600 w-24 h-7 rounded-md text-white rounded-2 m-4 hover:bg-white hover:text-black font-mono font-bold ">
+          <button className="bg-sky-950 w-24 h-7 rounded-sm text-white rounded-2 m-4 hover:bg-white hover:text-black font-mono font-bold ">
             btn1
           </button>
-          <button className="bg-orange-600 w-24 h-7 rounded-md text-white rounded-2 m-4 hover:bg-white hover:text-black font-mono font-bold">
+          <button className="bg-sky-950 w-24 h-7 rounded-sm text-white rounded-2 m-4 hover:bg-white hover:text-black font-mono font-bold">
             btn2
           </button>
         </div>
 
       </div>
-
-      <div className="w-full h-520">
-      <div className="w-full h-full border-solid border-2 border-black m-8 p-8 font-mono text-xl font-bold " rows="15">
+      <div className='flex-col'>
+      <div className="w-full h-auto flex-col mb-56">
+      <div className="w-3/4 h-520 border-solid border-2 border-black my-8 ml-48 p-8 font-mono text-xl font-bold " rows="15">
         {currentQuestionIndex < questions.length ? (
         <p>{"Q."+currentQuestionIndex+"."+questions[currentQuestionIndex].question +"?"}</p>
       ) : (
@@ -157,36 +157,40 @@ const InterviewPage = () => {
       )}
         {submittedValue && <p>Ans: {submittedValue}</p>}
         </div>
+        <div className='flex justify-center '>
         <button
-            className="bg-orange-600 w-24 text-white rounded-5px border-red-600 border-1px rounded-md  p-1 hover:bg-white hover:text-black font-mono font-bold"
+            className="bg-sky-950 w-24 text-white rounded-sm border-red-600 border-1px rounded-md mx-4 p-1 hover:bg-emerald-600 hover:text-black font-mono font-bold"
             onClick={moveToPrevQuestion}
           >
-            Prev.
+            Prev
           </button>
           <button
-            className="bg-orange-600 w-24 text-white rounded-5px border-red-600 border-1px rounded-md  p-1 hover:bg-white hover:text-black font-mono font-bold"
+            className="bg-sky-950 w-24 text-white rounded-sm border-red-600 border-1px rounded-md mx-4  p-1 hover:bg-emerald-600 hover:text-black font-mono font-bold"
             onClick={moveToNextQuestion}
           >
             Next
           </button>
+          </div>
       </div>
 
-      <div className="w-full h-200 flex justify-center items-center bg-sky-950 mt-28">
+      <div className="w-full h-200 flex justify-center items-center bg-emerald-600 mt-48 border-2 border-emerald-600">
         <input
         value={inputValue}
-          className="border-black border-1 w-2/5 p-1 m-12 rounded-5px font-bold font-mono text-black px-5"
+          className="border-black border-1 w-2/5 p-1 my-20 mx-3 rounded-5px font-bold font-mono text-black px-5"
           type="text"
           placeholder="type your answer"
           onChange={handleInputChange}
         />
           <button
-            className="bg-orange-600 w-24 text-white rounded-5px border-red-600 border-1px rounded-md  p-1 hover:bg-white hover:text-black font-mono font-bold"
+            className="bg-sky-950 w-24 text-white rounded-sm border-red-600 border-1px rounded-md  p-1 hover:bg-white hover:text-black font-mono font-bold"
             onClick={handleSubmit}
           >
             Submit
           </button>
       </div>
-    </>
+      </div>
+      
+    </div>
   );
 };
 
