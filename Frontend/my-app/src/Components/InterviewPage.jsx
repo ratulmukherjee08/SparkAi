@@ -156,10 +156,10 @@ const InterviewPage = () => {
         <img src="./logo.svg" className="w-20" />
         <div>
           <Link to="/anylasis">
-          {/* <button onClick={handleClick} className="bg-sky-950 w-34 h-8 rounded-sm text-white rounded-2 m-4 hover:bg-white hover:text-black font-mono font-bold ">
+          {/* <button  className="bg-sky-950 w-34 h-8 rounded-sm text-white rounded-2 m-4 hover:bg-white hover:text-black font-mono font-bold ">
             Analysis
           </button> */}
-          <button class="bg-sky-950 hover:bg-white hover:text-black text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+          <button onClick={handleClick} class="bg-sky-950 hover:bg-white hover:text-black text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
           Analysis Report
 </button>
           </Link>
