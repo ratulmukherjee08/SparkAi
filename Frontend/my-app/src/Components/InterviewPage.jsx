@@ -78,6 +78,7 @@
 // ----------------------------------------------------------------------------------------------------------
 
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const InterviewPage = () => {
   const [questions, setQuestions] = useState([]);
@@ -88,13 +89,14 @@ const InterviewPage = () => {
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
+  let marks = []
   const handleSubmit = () => {
     setSubmittedValue(inputValue);
     let obj={
       "question":questions[currentQuestionIndex].question,
       "answer":inputValue
     }
-    console.log(obj)
+    // console.log(obj)
     fetch (`https://sparai-backend-app.onrender.com/interview/post`,{
       method: `POST`,
       headers:{
@@ -105,24 +107,26 @@ const InterviewPage = () => {
     .then ((res)=>res.json()).then ((data)=>setFeedback((prevFeedback) => ({
       ...prevFeedback,
       [currentQuestionIndex]: data.res,
-    })))
+    }),
+    
+    ))
     .catch((e)=>console.log(e))
     setInputValue("");
-    
-  };
+
+  
+
+  
+};
   // Function to move to the next question
   const moveToNextQuestion = () => {
     setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
     setSubmittedValue("")
   };
-  
   const getQuestions = async () => {
     const topic=JSON.parse(localStorage.getItem("topic"))
     let obj={
       topic
     }
-    console.log(obj)
-     
      await fetch (`https://sparai-backend-app.onrender.com/questions?topic=${topic}`)
     .then ((res)=>res.json()).then ((data)=>setQuestions(data.msg)).catch((e)=>console.log(e))
     
@@ -132,16 +136,30 @@ const InterviewPage = () => {
     getQuestions();
   }, []);
 
-  console.log(questions);
+  
+
+  let handleClick=()=>{
+    for(let key in feedback){
+      // console.log(feedback[key].split(' ')[1]).
+      marks.push({[key]:feedback[key].split(' ')[1]})
+    }
+    console.log(marks)
+    localStorage.setItem("marks", JSON.stringify(marks))
+  }
+
+  
+
 
   return (
     <div className='bg-slate-200'>
       <div className="w-full h-14 flex justify-between items-center bg-emerald-600">
         <img src="./logo.svg" className="w-20" />
         <div>
-          <button className="bg-sky-950 w-24 h-7 rounded-sm text-white rounded-2 m-4 hover:bg-white hover:text-black font-mono font-bold ">
+          <Link to="/anylasis">
+          <button onClick={handleClick} className="bg-sky-950 w-24 h-7 rounded-sm text-white rounded-2 m-4 hover:bg-white hover:text-black font-mono font-bold ">
             btn1
           </button>
+          </Link>
           <button className="bg-sky-950 w-24 h-7 rounded-sm text-white rounded-2 m-4 hover:bg-white hover:text-black font-mono font-bold">
             btn2
           </button>
@@ -166,7 +184,7 @@ const InterviewPage = () => {
         </div>
         <div className='flex justify-center '>
           <button
-            className="bg-sky-950 w-24 text-white rounded-sm border-red-600 border-1px rounded-md mx-4  p-1 hover:bg-emerald-600 hover:text-black font-mono font-bold"
+            className="bg-sky-950 w-24 text-white  border-red-600 border-1px rounded-md mx-4  p-1 hover:bg-emerald-600 hover:text-black font-mono font-bold"
             onClick={moveToNextQuestion}
           >
             Next
@@ -183,7 +201,7 @@ const InterviewPage = () => {
           onChange={handleInputChange}
         />
           <button
-            className="bg-sky-950 w-24 text-white rounded-sm border-red-600 border-1px rounded-md  p-1 hover:bg-white hover:text-black font-mono font-bold"
+            className="bg-sky-950 w-24 text-white  border-red-600 border-1px rounded-md  p-1 hover:bg-white hover:text-black font-mono font-bold"
             onClick={handleSubmit}
           >
             Submit
