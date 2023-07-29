@@ -68,7 +68,8 @@ export const Anylasis = () => {
         </div>
       </div>
       <h2 style={{textAlign:"center", paddingBottom:"20px", paddingTop:"25px"}} >AVERAGE MARKS SCORED BY YOU</h2>
-      <div style={{ height:"600px", display:"grid", placeItems:"center", marginTop:"50px", padding:"20px"}}>
+      <h2 style={{textAlign:"center", paddingBottom:"10px", paddingTop:"10px"}} >OUT OF 10</h2>
+      <div style={{ height:"550px", display:"grid", placeItems:"center", marginTop:"50px", padding:"20px"}}>
       <Doughnut data={data} />;
       </div>
     </div>
