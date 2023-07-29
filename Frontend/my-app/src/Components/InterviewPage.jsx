@@ -84,6 +84,7 @@ const InterviewPage = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [inputValue, setInputValue] = useState('');
   const [submittedValue, setSubmittedValue] = useState('');
+  const [feedback, setFeedback] = useState({});
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
@@ -101,17 +102,17 @@ const InterviewPage = () => {
       },
       body:JSON.stringify(obj)
     })
-    .then ((res)=>res.json()).then ((data)=>console.log(data.res)).catch((e)=>console.log(e))
+    .then ((res)=>res.json()).then ((data)=>setFeedback((prevFeedback) => ({
+      ...prevFeedback,
+      [currentQuestionIndex]: data.res,
+    })))
+    .catch((e)=>console.log(e))
     setInputValue("");
     
   };
   // Function to move to the next question
   const moveToNextQuestion = () => {
     setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-    setSubmittedValue("")
-  };
-  const moveToPrevQuestion = () => {
-    setCurrentQuestionIndex((prevIndex) => prevIndex - 1);
     setSubmittedValue("")
   };
   
@@ -151,19 +152,19 @@ const InterviewPage = () => {
       <div className="w-full h-auto flex-col mb-56">
       <div className="w-3/4 h-520 border-solid border-2 border-black my-8 ml-48 p-8 font-mono text-xl font-bold " rows="15">
         {currentQuestionIndex < questions.length ? (
-        <p>{"Q."+currentQuestionIndex+"."+questions[currentQuestionIndex].question +"?"}</p>
+        <p className='border-0 text-red-600 mt-4 p-4 shadow-md '>{"Q."+[currentQuestionIndex+1]+"."+questions[currentQuestionIndex].question +"?"}</p>
       ) : (
         <p>No more questions.</p>
       )}
-        {submittedValue && <p>Ans: {submittedValue}</p>}
+        {submittedValue && <p className='border-0 text-green-600 mt-4 p-4 shadow-sm'>Ans: {submittedValue}</p>}
+        <div> {feedback[currentQuestionIndex] && (
+                  <div className='border-0 bg-sky-950 mt-4 p-4 shadow-md'>
+                    <h4 className='font-bold text-orange-500'>Feedback:</h4>
+                    <p className='text-white'>{feedback[currentQuestionIndex]}</p>
+                  </div>
+                )}</div>
         </div>
         <div className='flex justify-center '>
-        <button
-            className="bg-sky-950 w-24 text-white rounded-sm border-red-600 border-1px rounded-md mx-4 p-1 hover:bg-emerald-600 hover:text-black font-mono font-bold"
-            onClick={moveToPrevQuestion}
-          >
-            Prev
-          </button>
           <button
             className="bg-sky-950 w-24 text-white rounded-sm border-red-600 border-1px rounded-md mx-4  p-1 hover:bg-emerald-600 hover:text-black font-mono font-bold"
             onClick={moveToNextQuestion}
