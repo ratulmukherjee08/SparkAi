@@ -59,12 +59,12 @@ export const Anylasis = () => {
       <div className="w-full h-14 flex justify-between items-center bg-emerald-600">
         <img src="./logo.svg" className="w-20" />
         <div>
-          <button className="bg-sky-950 w-24 h-7 rounded-sm text-white rounded-2 m-4 hover:bg-white hover:text-black font-mono font-bold ">
+          {/* <button className="bg-sky-950 w-24 h-7 rounded-sm text-white rounded-2 m-4 hover:bg-white hover:text-black font-mono font-bold ">
             btn1
           </button>
           <button className="bg-sky-950 w-24 h-7 rounded-sm text-white rounded-2 m-4 hover:bg-white hover:text-black font-mono font-bold">
             btn2
-          </button>
+          </button> */}
         </div>
       </div>
       <h2 style={{textAlign:"center", paddingBottom:"20px", paddingTop:"25px"}} >AVERAGE MARKS SCORED BY YOU</h2>
